@@ -1,6 +1,4 @@
 # PictureText
- A Python-based project that converts images into text using Tesseract OCR. Perfect for extracting data from scanned documents, screenshots, or photos, making it easier to work with textual information in visual formats.
-# PictureText
 
 *PictureText* is a Python-based project that uses Tesseract OCR to convert images into editable text. Whether you want to extract text from scanned documents, photos, or screenshots, this project provides a simple solution for converting visual content into usable text.
 
@@ -30,9 +28,35 @@ To run this project, you'll need the following:
 
 ## Installation
 
-### 1. Install Python Dependencies
-
-You can install the required Python packages using pip:
+### 1. Clone the Repository
 
 ```bash
-pip install pytesseract opencv-python Pillow
+git clone https://github.com/Wobo-bright/PictureText.git
+```
+
+## Usage
+
+1. *Run the Script*
+
+    ```bash
+    python main.py
+    ```
+    
+
+2. *Extract Text*
+
+    After running the script, it will process the image and display the extracted text in your terminal.
+
+---
+
+## Contributing
+
+Contributions to *PictureText* are welcome! If you have ideas for improvements, new features, or bug fixes, feel free to open an issue or submit a pull request.
+
+---
+
+## License
+
+*PictureText* is licensed under the [MIT License](LICENSE).
+
+---
