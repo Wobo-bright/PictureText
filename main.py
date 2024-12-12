@@ -2,37 +2,29 @@ import cv2
 from PIL import Image
 import pytesseract
 
+# Ask the user for the image path
+image_path = input("Enter the full path to the image file: ")
 
-# Specify the path to Tesseract executable (required for Windows)
-# Uncomment and modify this line for Windows users
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\HP\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
+try:
+    # Load the image
+    image = cv2.imread(image_path)
 
-# Function to extract text from an image
-def extract_text_from_image(image_path):
-    try:
-        # Load the image
-        image = cv2.imread(image_path)
-        if image is None:
-            raise FileNotFoundError(f"Image not found at path: {image_path}")
+    if image is None:
+        raise FileNotFoundError("The image file was not found. Please check the path.")
 
-        # Preprocess the image
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        _, thresh = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
+    # Convert to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-        # Convert OpenCV image (numpy array) to PIL image
-        processed_image = Image.fromarray(thresh)
+    # Apply thresholding
+    _, thresh = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
 
-        # Extract text
-        text = pytesseract.image_to_string(processed_image)
-        return text
-    except Exception as e:
-        return f"An error occurred: {e}"
+    # Save the processed image temporarily
+    processed_path = 'processed_image.jpg'
+    cv2.imwrite(processed_path, thresh)
 
-
-# Path to the image
-image_path = "my image.jpg"  # Replace with your image file path
-
-# Extract and print text
-extracted_text = extract_text_from_image(image_path)
-print("Extracted Text:")
-print(extracted_text)
+    # Extract text using pytesseract
+    text = pytesseract.image_to_string(Image.open(processed_path))
+    print("Extracted Text:")
+    print(text)
+except Exception as e:
+    print(f"An error occurred: {e}")
