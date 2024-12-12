@@ -41,9 +41,11 @@ git clone https://github.com/Wobo-bright/PictureText.git
     ```bash
     python main.py
     ```
+    when you run the script, you'd me asked to upload the image file you want to read. do that by copying and pasting the complete path of that image file.
+    if there are qoutation marks («»)  remove them to prevent an error.
     
 
-2. *Extract Text*
+3. *Extract Text*
 
     After running the script, it will process the image and display the extracted text in your terminal.
 
