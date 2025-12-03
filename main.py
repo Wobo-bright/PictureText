@@ -23,7 +23,7 @@ with st.sidebar:
         st.info(
             """
             - Tesseract OCR must be installed
-            - For AI enhancement, add ANTHROPIC_API_KEY to `.streamlit/secrets.toml`
+            - For AI enhancement, add GROQ_API_KEY to `.streamlit/secrets.toml`
             """
         )
 
