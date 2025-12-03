@@ -1,1 +1,36 @@
-venv/ 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+.env
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Streamlit
+.streamlit/
+
+# Images and generated files
+*.jpg
+*.png
+*.jpeg
+*.gif
+processed_image.jpg
+output/
+results/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Data files (if you have any)
+*.csv
+*.xlsx
+*.db
+*.sqlite
