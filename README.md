@@ -75,6 +75,9 @@ The app will open in your browser at `http://localhost:8501`
 3. View the processed image and extracted text
 4. (Optional) Click **"Enhance text with AI"** to correct OCR errors
 
+### How it looks like
+![PictureText Interface](screenshot.png)
+
 ---
 
 ## Project Structure
