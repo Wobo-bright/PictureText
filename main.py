@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-import cv2
-from PIL import Image
-import pytesseract
-
-# Ask the user for the image path
-image_path = input("Enter the full path to the image file: ")
-
-try:
-    # Load the image
-    image = cv2.imread(image_path)
-
-    if image is None:
-        raise FileNotFoundError("The image file was not found. Please check the path.")
-
-    # Convert to grayscale
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-    # Apply thresholding
-    _, thresh = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
-
-    # Save the processed image temporarily
-    processed_path = 'processed_image.jpg'
-    cv2.imwrite(processed_path, thresh)
-
-    # Extract text using pytesseract
-    text = pytesseract.image_to_string(Image.open(processed_path))
-    print("Extracted Text:")
-    print(text)
-except Exception as e:
-    print(f"An error occurred: {e}")
-=======
 import streamlit as st
 from computer_vision import Processor
 from extraction import Extract
@@ -101,24 +69,22 @@ if source_img:
     # AI Enhancement section
     if 'extracted_text' in st.session_state:
         st.subheader("4. Enhance Text with AI (Optional)")
-        st.write("Use Claude to clean up OCR errors and improve text quality")
+        st.write("Use AI to clean up OCR errors and improve text quality")
         
         if st.button("Enhance text with AI"):
             try:
-                import anthropic
+                from groq import Groq
                 
                 # Get API key from secrets
-                api_key = st.secrets.get("ANTHROPIC_API_KEY")
+                api_key = st.secrets.get("GROQ_API_KEY")
                 
                 if not api_key:
-                    st.error("ANTHROPIC_API_KEY not found in secrets. Please add it to `.streamlit/secrets.toml`")
+                    st.error("GROQ_API_KEY not found in secrets. Please add it to `.streamlit/secrets.toml`")
                 else:
                     with st.spinner("Enhancing text with AI..."):
-                        client = anthropic.Anthropic(api_key=api_key)
+                        client = Groq(api_key=api_key)
                         
-                        message = client.messages.create(
-                            model="claude-sonnet-4-20250514",
-                            max_tokens=2000,
+                        chat_completion = client.chat.completions.create(
                             messages=[
                                 {
                                     "role": "user",
@@ -129,18 +95,20 @@ Maintain the original meaning and structure.
 OCR Text:
 {st.session_state['extracted_text']}"""
                                 }
-                            ]
+                            ],
+                            model="llama-3.3-70b-versatile",
+                            max_tokens=2000,
+                            temperature=0.3,
                         )
                         
-                        enhanced_text = message.content[0].text
+                        enhanced_text = chat_completion.choices[0].message.content
                         
                         st.subheader("Enhanced Text")
                         st.text_area("AI-Enhanced Result:", enhanced_text, height=200)
                         
             except ImportError:
-                st.error("The `anthropic` package is not installed. Run: `pip install anthropic`")
+                st.error("The `groq` package is not installed. Run: `pip install groq`")
             except Exception as e:
                 st.error(f"Error enhancing text: {e}")
 else:
     st.info("👆 Please upload an image to get started")
->>>>>>> 329d64b (Added initial files)
