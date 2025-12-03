@@ -1,6 +1,6 @@
 # PictureText
 
-*PictureText* is a Python-based OCR application that extracts text from images using Tesseract OCR and OpenCV. It features a modern Streamlit web interface and optional AI-powered text enhancement using Claude.
+*PictureText* is a Python-based OCR application that extracts text from images using Tesseract OCR and OpenCV. It features a modern Streamlit web interface and optional AI-powered text enhancement.
 
 ---
 
