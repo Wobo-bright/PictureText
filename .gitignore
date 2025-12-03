@@ -18,7 +18,6 @@ env/
 
 # Images and generated files
 *.jpg
-*.png
 *.jpeg
 *.gif
 processed_image.jpg
