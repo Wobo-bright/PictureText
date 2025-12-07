@@ -13,9 +13,6 @@ env/
 *.swp
 *.swo
 
-# Streamlit
-.streamlit/
-
 # Images and generated files
 *.jpg
 *.jpeg
