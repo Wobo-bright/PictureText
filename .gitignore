@@ -25,6 +25,9 @@ results/
 .DS_Store
 Thumbs.db
 
+#streamlit
+.streamlit/
+
 # Data files (if you have any)
 *.csv
 *.xlsx
