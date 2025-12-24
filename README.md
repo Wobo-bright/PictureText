@@ -55,9 +55,9 @@ pip install -r requirements.txt
 ### 4. (Optional) Configure AI Enhancement
 Create `.streamlit/secrets.toml` for AI-powered text correction:
 ```toml
-ANTHROPIC_API_KEY = "your-api-key"
+GROQ_API_KEY = "your-api-key"
 ```
-Get your API key at [console.anthropic.com](https://console.anthropic.com/)
+Get your API key at [console.groq.com](https://console.groq.com/keys)
 
 ---
 
